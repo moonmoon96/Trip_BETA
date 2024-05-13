@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 function Board(){
-    const buttonsNameList = ['최신 순', '인기 순', '많이 본 순', '댓글 순']
+    const buttonsNameList = ['최신 순', '인기 순', '많이 본 순']
     const [clicked, setClicked] = useState(0);
     
     const toggleActive = (e: any) => {

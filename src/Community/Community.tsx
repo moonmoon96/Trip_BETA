@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Header from '../Layout/Header';
 import banner from './banner.webp';
 import Board from './Board';
 import Post from './Post';
@@ -10,8 +9,7 @@ function Community() {
     const [inputValue, setInputValue] = useState('');
   
     return (
-      <>
-        <Header></Header>    
+      <>         
         <div className='community'>        
           <div className='top'>
             <div className='top-banner'>
