@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Join(){
 
@@ -24,7 +24,52 @@ function Join(){
         setOpen('');
     }
 
+    const emailTag = useRef<HTMLInputElement>(null);
 
+    useEffect(()=>{
+        if(emailTag.current)
+        emailTag.current.focus();
+    },[])
+
+    const [inputValue, setInputValue] = useState({
+        email : '',
+        validEmail : false,
+        nonEmailDuplication : false,   //이메일 중복확인 여부
+        pw : '',
+        validPw : false,
+        name : '',
+        validName : false,
+        gender : '',
+        validGender : false,
+        birth : '',
+        validBirth : false,
+        agree : false,  //정보 제공 동의 여부        
+    })
+
+    const submitRequirements = inputValue.email &&
+                                inputValue.validEmail &&
+                                // inputValue.nonEmailDuplication &&
+                                inputValue.pw &&
+                                inputValue.validPw;
+                                // inputValue.name &&
+                                // inputValue.validName &&
+                                // inputValue.agree;
+
+    const inputRegexs = {
+        emailRegex : (/^[A-z0-9]{2,20}\+@[A-z]{2,20}\+\.[a-z]{2,3]$/),
+        pwRegex : /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/
+    }
+
+    useEffect(()=>{
+        const result = inputRegexs.emailRegex.test(inputValue.email);
+        inputValue.validEmail=result;
+    }, [inputValue.email])
+
+    useEffect(()=>{
+        const result =inputRegexs.pwRegex.test(inputValue.pw);
+        inputValue.validPw=result;
+    }, [inputValue.pw])
+    
     return(
         <div className="join">
             <h3 className="join-title">회원가입</h3>
@@ -35,13 +80,13 @@ function Join(){
                 </div>
                 <div className="join-body-main">
                     <div className="join-body-input">
-                        <input  className="join-body-inputbox" type="text" placeholder="이메일 주소"></input>
+                        <input  value={inputValue.email} className="join-body-inputbox" ref={emailTag} type="text" placeholder="이메일 주소" onChange={(e)=>setInputValue({...inputValue, email:e.target.value})}></input>
                     </div>
                     <div className="join-body-input">
-                        <input  className="join-body-inputbox" type="password" placeholder="비밀번호(8자~12자, 영문+숫자+특수문자 사용)"></input>
+                        <input value={inputValue.pw} className="join-body-inputbox" type="password" placeholder="비밀번호(8자~12자, 영문+숫자+특수문자 사용)" onChange={(e)=>setInputValue({...inputValue, pw:e.target.value})}></input>
                     </div>
                     <div className="join-body-input">
-                        <input  className="join-body-inputbox" type="text" placeholder="이름"></input>
+                        <input value={inputValue.name} className="join-body-inputbox" type="text" placeholder="이름" onChange={(e)=>setInputValue({...inputValue, name:e.target.value})}></input>
                     </div>
                     <div className="join-body-input">
                         <li className="join-li" onClick={()=>setOpen('gender')}>{gender}</li>

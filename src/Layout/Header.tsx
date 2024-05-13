@@ -4,8 +4,8 @@ import {useNavigate} from 'react-router-dom';
 function Header(){
 
     const headerLeftButtonList = ['홈', '플래너', '커뮤니티'];
-    const [clicked, setClicked] = useState(0);
     const nav = ['/home', '/planner', '/community'];
+    const [clicked, setClicked] = useState(0);    
     
     let navigate = useNavigate();
 
