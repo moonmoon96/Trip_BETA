@@ -4,6 +4,7 @@ import {Routes, Route} from 'react-router-dom';
 import Login from './Auth/Login';
 import Normal from './Auth/Normal';
 import Join from './Auth/Join';
+import Detail from './Community/detail';
 
 function Trip() {
 
@@ -15,6 +16,7 @@ function Trip() {
         <Route path='/login' element={<Login></Login>}></Route>        
         <Route path='/login/normal' element={<Normal></Normal>}></Route>  
         <Route path='/join' element={<Join></Join>}></Route>
+        <Route path='/detail' element={<Detail></Detail>}></Route>
       </Routes>
     </>
   );
