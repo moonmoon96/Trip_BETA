@@ -39,36 +39,71 @@ function Join(){
         validPw : false,
         name : '',
         validName : false,
+        nick : '',
+        validNick : false,
         gender : '',
         validGender : false,
-        birth : '',
-        validBirth : false,
-        agree : false,  //정보 제공 동의 여부        
+        year : '',
+        validYear : false,
+        month : '',
+        validMonth : false,
+        date : '',
+        validDate : false,    
     })
 
     const submitRequirements = inputValue.email &&
-                                inputValue.validEmail &&
-                                // inputValue.nonEmailDuplication &&
+                                inputValue.validEmail &&                                
                                 inputValue.pw &&
-                                inputValue.validPw;
-                                // inputValue.name &&
-                                // inputValue.validName &&
-                                // inputValue.agree;
+                                inputValue.validPw &&
+                                inputValue.name &&
+                                inputValue.validName &&
+                                inputValue.nick &&
+                                inputValue.validNick &&
+                                inputValue.gender &&
+                                inputValue.validGender &&
+                                inputValue.year &&
+                                inputValue.validYear &&
+                                inputValue.month &&
+                                inputValue.validMonth &&
+                                inputValue.date &&
+                                inputValue.validDate;    
 
-    const inputRegexs = {
-        emailRegex : (/^[A-z0-9]{2,20}\+@[A-z]{2,20}\+\.[a-z]{2,3]$/),
-        pwRegex : /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/
-    }
+    useEffect(() => {
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+        setInputValue(prev => ({ ...prev, validEmail: emailRegex.test(inputValue.email) }));
+    }, [inputValue.email]);
 
-    useEffect(()=>{
-        const result = inputRegexs.emailRegex.test(inputValue.email);
-        inputValue.validEmail=result;
-    }, [inputValue.email])
+    useEffect(() => {
+        const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/;
+        setInputValue(prev => ({ ...prev, validPw: pwRegex.test(inputValue.pw) }));
+    }, [inputValue.pw]);
 
-    useEffect(()=>{
-        const result =inputRegexs.pwRegex.test(inputValue.pw);
-        inputValue.validPw=result;
-    }, [inputValue.pw])
+    useEffect(() => {
+        const nameRegex = /^[^\s]+$/;        
+        setInputValue(prev => ({ ...prev, validName: nameRegex.test(inputValue.name) }));
+    }, [inputValue.name]);
+
+    useEffect(() => {
+        const nickRegex = /^[a-zA-Z가-힣0-9_]{2,20}$/;
+        setInputValue(prev => ({ ...prev, validNick: nickRegex.test(inputValue.nick) }));
+    }, [inputValue.nick]);
+
+    useEffect(() => {
+        setInputValue(prev => ({ ...prev, gender: gender, validGender: gender !== '' }));
+    }, [gender]);
+
+    useEffect(() => {
+        const yearRegex = /^[0-9]{4}$/;
+        setInputValue(prev => ({ ...prev, validYear: yearRegex.test(inputValue.year) }));
+    }, [inputValue.year]);
+
+    useEffect(() => {
+        setInputValue(prev => ({ ...prev, month: month, validMonth: month !== '월' }));
+    }, [month]);
+
+    useEffect(() => {
+        setInputValue(prev => ({ ...prev, date: date, validDate: date !== '일' }));
+    }, [date]);
     
     return(
         <div className="join">
@@ -89,6 +124,9 @@ function Join(){
                         <input value={inputValue.name} className="join-body-inputbox" type="text" placeholder="이름" onChange={(e)=>setInputValue({...inputValue, name:e.target.value})}></input>
                     </div>
                     <div className="join-body-input">
+                        <input value={inputValue.nick} className="join-body-inputbox" type="text" placeholder="닉네임" onChange={(e)=>setInputValue({...inputValue, nick:e.target.value})}></input>
+                    </div>
+                    <div className="join-body-input">
                         <li className="join-li" onClick={()=>setOpen('gender')}>{gender}</li>
                         <ul className={"join-ul" + (open === 'gender' ? "-year" : "")}>
                             <li className="join-ul-li" value={1} onClick={changeGender}>남</li>
@@ -98,7 +136,7 @@ function Join(){
                     
                     <div className="join-body-grid">
                         <div className="join-body-grid-year">
-                            <input className="join-body-year-font" type="text" placeholder="년(예 1996)"></input>
+                            <input value={inputValue.year} className="join-body-year-font" type="text" placeholder="년(예 1996)" maxLength={4} onChange={(e)=>setInputValue({...inputValue, year:e.target.value})}></input>
                         </div>
                         <div className="join-body-input">
                             <li className="join-li" onClick={()=>setOpen('month')}>{month}</li>
@@ -131,7 +169,7 @@ function Join(){
                         <p className="join-agree-font">이용약관 동의</p>
                     </div>
                 </div>
-                <button className="join-body-button">회원가입</button>
+                <button className={"join-body-button" + (submitRequirements === true ? 'active' : '')} onClick={()=>{if(submitRequirements){console.log(inputValue.name)}}}>회원가입</button>
             </div>
         </div>
     )
