@@ -1,6 +1,26 @@
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 
 function Join(){
+
+    const baseUrl = "http://172.16.1.87:8080";
+
+    async function postInfo(e : any) {
+        e.preventDefault(); 
+        await axios
+            .post(baseUrl+"/join",{
+                email : inputValue.email,
+                password : inputValue.pw,
+                username : inputValue.name,
+                nickname : inputValue.nick,
+                gender : (inputValue.gender === '남' ? 'm' : 'f'),
+                birth : inputValue.year + inputValue.month.replace('월', '').padStart(2, '0') + inputValue.date.replace('일', '').padStart(2, '0')
+            }).then((response)=>{
+                console.log("성공인가?!" + response)
+            }).catch((err)=>{
+                console.log("실패임 ㅅㄱ ㅋㅋㅋ"+ err)
+            })            
+    }
 
     const [open, setOpen] = useState('');
     const [gender, setGender] = useState('성별');
@@ -8,6 +28,7 @@ function Join(){
     const [date, setDate] = useState('일');
     const monthList = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
     const dateList = ['1일','2일','3일','4일','5일','6일','7일','8일','9일','10일','11일','12일','13일','14일','15일','16일','17일','18일','19일','20일','21일','22일','23일','24일','25일','26일','27일','28일','29일','30일','31일'];
+    const [keepClicked, setKeepClicked] = useState(0);
 
     const changeGender = (e : any) => {
         setGender(e.target.value === 1 ? '남' : '여');
@@ -48,7 +69,7 @@ function Join(){
         month : '',
         validMonth : false,
         date : '',
-        validDate : false,    
+        validDate : false
     })
 
     const submitRequirements = inputValue.email &&
@@ -79,7 +100,7 @@ function Join(){
     }, [inputValue.pw]);
 
     useEffect(() => {
-        const nameRegex = /^[^\s]+$/;        
+        const nameRegex = /^[가-힣]{2,5}$/;        
         setInputValue(prev => ({ ...prev, validName: nameRegex.test(inputValue.name) }));
     }, [inputValue.name]);
 
@@ -115,20 +136,20 @@ function Join(){
                 </div>
                 <div className="join-body-main">
                     <div className="join-body-input">
-                        <input  value={inputValue.email} className="join-body-inputbox" ref={emailTag} type="text" placeholder="이메일 주소" onChange={(e)=>setInputValue({...inputValue, email:e.target.value})}></input>
+                        <input  value={inputValue.email} className={"join-body-inputbox" + (inputValue.validEmail === true ? 'confirm' : '')}  ref={emailTag} type="text" placeholder="이메일 주소" onChange={(e)=>setInputValue({...inputValue, email:e.target.value})}></input>
                     </div>
                     <div className="join-body-input">
-                        <input value={inputValue.pw} className="join-body-inputbox" type="password" placeholder="비밀번호(8자~12자, 영문+숫자+특수문자 사용)" onChange={(e)=>setInputValue({...inputValue, pw:e.target.value})}></input>
+                        <input value={inputValue.pw} className={"join-body-inputbox" + (inputValue.validPw === true ? 'confirm' : '')} type="password" placeholder="비밀번호(8자~12자, 영문+숫자+특수문자 사용)" onChange={(e)=>setInputValue({...inputValue, pw:e.target.value})}></input>
                     </div>
                     <div className="join-body-input">
-                        <input value={inputValue.name} className="join-body-inputbox" type="text" placeholder="이름" onChange={(e)=>setInputValue({...inputValue, name:e.target.value})}></input>
+                        <input value={inputValue.name} className={"join-body-inputbox" + (inputValue.validName === true ? 'confirm' : '')} type="text" placeholder="이름" onChange={(e)=>setInputValue({...inputValue, name:e.target.value})}></input>
                     </div>
                     <div className="join-body-input">
-                        <input value={inputValue.nick} className="join-body-inputbox" type="text" placeholder="닉네임" onChange={(e)=>setInputValue({...inputValue, nick:e.target.value})}></input>
+                        <input value={inputValue.nick} className={"join-body-inputbox" + (inputValue.validNick === true ? 'confirm' : '')} type="text" placeholder="닉네임" onChange={(e)=>setInputValue({...inputValue, nick:e.target.value})}></input>
                     </div>
                     <div className="join-body-input">
-                        <li className="join-li" onClick={()=>setOpen('gender')}>{gender}</li>
-                        <ul className={"join-ul" + (open === 'gender' ? "-year" : "")}>
+                        <li className={"join-li" + (inputValue.gender === '성별' ? '' : 'confirm')} onClick={()=>setOpen('gender')}>{gender}</li>
+                        <ul className={"join-ul" + (open === 'gender' ? "-gender" : "")}>
                             <li className="join-ul-li" value={1} onClick={changeGender}>남</li>
                             <li className="join-ul-li" value={2} onClick={changeGender}>여</li>
                         </ul>
@@ -136,10 +157,10 @@ function Join(){
                     
                     <div className="join-body-grid">
                         <div className="join-body-grid-year">
-                            <input value={inputValue.year} className="join-body-year-font" type="text" placeholder="년(예 1996)" maxLength={4} onChange={(e)=>setInputValue({...inputValue, year:e.target.value})}></input>
+                            <input value={inputValue.year} className={"join-body-year-font" + (inputValue.validYear === true ? 'confirm' : '')} type="text" placeholder="년(예 1996)" maxLength={4} onChange={(e)=>setInputValue({...inputValue, year:e.target.value})}></input>
                         </div>
                         <div className="join-body-input">
-                            <li className="join-li" onClick={()=>setOpen('month')}>{month}</li>
+                            <li className={"join-li" + (inputValue.month === '월' ? '' : 'confirm')} onClick={()=>setOpen('month')}>{month}</li>
                             <ul className={"join-ul" + (open === 'month' ? "-month" : "")}>
                                 {monthList.map(function(a,i){
                                     return(
@@ -150,7 +171,7 @@ function Join(){
                             </ul>
                         </div>
                         <div className="join-body-input">
-                            <li className="join-li" onClick={()=>setOpen('date')}>{date}</li>
+                            <li className={"join-li"  + (inputValue.date === '일' ? '' : 'confirm')} onClick={()=>setOpen('date')}>{date}</li>
                             <ul className={"join-ul" + (open === 'date' ? "-date" : "")}>
                                 {dateList.map(function(a,i){
                                     return(
@@ -163,13 +184,13 @@ function Join(){
                 </div>
                 <div className="join-body-footer">
                     <div className="join-body-footer-agree">
-                        <button className="keep-button">
+                        <button className={"keep-button" + (keepClicked === 1 ? 'able' : '')} onClick={()=>{keepClicked === 0 ? setKeepClicked(1) : setKeepClicked(0)}}>
                             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6.65217L5.58333 11L12 1" stroke="#fff" stroke-width="1.5"></path></svg>
                         </button>
-                        <p className="join-agree-font">이용약관 동의</p>
+                        <p className="join-agree-font" onClick={()=>{keepClicked === 0 ? setKeepClicked(1) : setKeepClicked(0)}}>이용약관 동의</p>
                     </div>
                 </div>
-                <button className={"join-body-button" + (submitRequirements === true ? 'active' : '')} onClick={()=>{if(submitRequirements){console.log(inputValue.name)}}}>회원가입</button>
+                <button type="submit" className={"join-body-button" + (submitRequirements === true ? 'active' : '')} onClick={postInfo} disabled={!submitRequirements}>회원가입</button>
             </div>
         </div>
     )

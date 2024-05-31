@@ -1,14 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import defaultImage from './defaultImage.jpg';
-import calendar from './calendar.png';
-import eye from './eye.png';
-import chat from './chat.png';
-import test from './test.webp';
+import defaultImage from './image/defaultImage.jpg';
+import calendar from './image/calendar.png';
+import eye from './image/eye.png';
+import chat from './image/chat.png';
+import test from './image/test.webp';
+import {useNavigate} from 'react-router-dom';
 
 function Post(){
+
+  let navigate = useNavigate();
+
     return(
         <section className='post'>
-            <div className='post-col'>
+            <div className='post-col' onClick={()=>{navigate('/detail')}}>
               <div className='post-col-head'>
                 <div className='post-col-head-profile'>
                   <div className='post-profile-img'>

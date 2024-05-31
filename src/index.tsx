@@ -6,6 +6,7 @@ import Trip from './Trip';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import ScrollTop from './Utility/ScrollTop';
+import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,8 +14,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <CookiesProvider>
     <ScrollTop></ScrollTop>
     <Trip />    
+    </CookiesProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

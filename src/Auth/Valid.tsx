@@ -9,7 +9,7 @@ function Valid(){
     }
 
     return(
-        <div ref={modalRef} onClick={(e)=>{modalOutClick(e)}}>
+        <div className="valid" ref={modalRef} onClick={(e)=>{modalOutClick(e)}}>
 
         </div>
     )

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import banner from './banner.webp';
+import banner from './image/banner.webp';
 import Board from './Board';
 import Post from './Post';
 import Paging from '../Utility/Paging';

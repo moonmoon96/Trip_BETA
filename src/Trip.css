@@ -776,7 +776,7 @@ input:focus{
     height: auto;
 }
 
-.login-kakao{
+.login-naver{
     cursor: pointer;
     box-sizing: border-box;
     width: 100%;
@@ -786,8 +786,8 @@ input:focus{
     font-size: 15px;
     font-weight: 400;
     color: rgb(255, 255, 255);
-    background: rgb(254, 229, 0);
-    border: 1px solid rgb(254, 229, 0);
+    background: #00D337;
+    border: 1px solid #00D337;
     border-radius: 10px;
     transition: background-color 0.3s ease-out 0s;
     display: flex;
@@ -797,7 +797,7 @@ input:focus{
     justify-content: space-between;
 }
 
-.login-kakao-img{
+.login-naver-img{
     cursor: pointer;
     width: 24px;
     height: 24px;
@@ -810,13 +810,13 @@ input:focus{
     transition: transform 0.25s ease-in-out 0s;
 }
 
-.login-kakao-font{
+.login-naver-font{
     user-select: none;
     -webkit-user-drag: none;
     font-size: 16px;
     font-weight: 800;
     line-height: 24px;
-    color: rgb(37, 37, 37);
+    color: white;
     letter-spacing: -0.32px;
 }
 
@@ -971,6 +971,21 @@ input:focus{
     border-radius: 8px;
     transition: all 0.15s ease-out 0s;
     border: none;
+}
+
+.keep-buttonable{
+    display: flex;
+    flex-shrink: 0;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 22px;
+    height: 22px;
+    border-radius: 8px;
+    transition: all 0.15s ease-out 0s;
+    border: none;
     background: #CCD2F0;
 }
 
@@ -995,6 +1010,22 @@ input:focus{
     font-weight: 400;
     color: rgb(255, 255, 255);
     background: rgb(219, 219, 219);
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease-out 0s;
+}
+
+.normal-login-buttonactive{
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    margin: 0px;
+    padding: 0px;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    background: #CCD2F0;
     border: none;
     border-radius: 10px;
     transition: background-color 0.3s ease-out 0s;
@@ -1132,8 +1163,7 @@ input:focus{
     line-height: 20px;
     vertical-align: top;
     background: rgb(255, 255, 255);
-    background-color: #CCD2F0;
-    border: 1px solid var(--color-whiteGray);
+    border: 3px solid #CCD2F0;
     border-radius: 4px;
 }
 
@@ -1153,6 +1183,27 @@ input:focus{
     border-radius: 4px;
 }
 
+.join-li:active{
+    border: 1px solid #CCD2F0;
+}
+
+.join-liconfirm{
+    cursor: pointer;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding: 0px 20px;
+    font-size: 14px;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    border: 3px solid #CCD2F0;
+}
+
 .join-ul{
     cursor: pointer;
     position: absolute;
@@ -1168,7 +1219,7 @@ input:focus{
     background: rgb(255, 255, 255);
     border-width: 0px 1px 1px;
     border-right-style: solid;
-    border-bottom-style: solid;
+    border-bottom-style: opx solid;
     border-left-style: solid;
     border-right-color: rgb(255, 255, 255);
     border-bottom-color: rgb(255, 255, 255);
@@ -1179,7 +1230,7 @@ input:focus{
     transition: all 200ms ease 0s;
 }
 
-.join-ul-year{
+.join-ul-gender{
     cursor: pointer;
     position: absolute;
     z-index: 3;
@@ -1205,7 +1256,7 @@ input:focus{
     transition: all 200ms ease 0s;
 }
 
-.join-ul-year::-webkit-scrollbar{
+.join-ul-gender::-webkit-scrollbar{
     display: none;
 }
 
@@ -1289,7 +1340,7 @@ input:focus{
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
     gap: 10px;
-    padding-top: 9px;
+    padding-top: 0px;
     box-sizing: inherit;
     border: 0px;
 }
@@ -1305,7 +1356,22 @@ input:focus{
     box-sizing: inherit;
     background: rgb(255, 255, 255);
     font-size: 13px;
-    border: 1px solid rgb(233, 233, 233);
+    border: 1px solid white;
+    border-radius: 4px;
+    width: 100%;
+    height: 40px;
+}
+
+.join-body-year-font:focus{
+    border: 1px solid #CCD2F0;
+}
+
+.join-body-year-fontconfirm{
+    padding: 0px 20px;
+    box-sizing: inherit;
+    background: rgb(255, 255, 255);
+    font-size: 13px;
+    border: 3px solid #CCD2F0;
     border-radius: 4px;
     width: 100%;
     height: 40px;

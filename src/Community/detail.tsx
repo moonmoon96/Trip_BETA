@@ -1,5 +1,5 @@
-import calendar from './calendar.png';
-import eye from './eye.png';
+import calendar from './image/calendar.png';
+import eye from './image/eye.png';
 
 function Detail(){
     return(
