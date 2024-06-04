@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 function Join(){
 
-    const baseUrl = "http://172.16.1.87:8080";
+    const baseUrl = "http://172.16.1.121:8080";
 
     async function postInfo(e : any) {
         e.preventDefault(); 
@@ -16,9 +16,10 @@ function Join(){
                 gender : (inputValue.gender === '남' ? 'm' : 'f'),
                 birth : inputValue.year + inputValue.month.replace('월', '').padStart(2, '0') + inputValue.date.replace('일', '').padStart(2, '0')
             }).then((response)=>{
-                console.log("성공인가?!" + response)
+                console.log("성공" + response)                
             }).catch((err)=>{
-                console.log("실패임 ㅅㄱ ㅋㅋㅋ"+ err)
+                const msg = err.response.data.errors[0].reason;
+                console.log("에러" + msg);                
             })            
     }
 

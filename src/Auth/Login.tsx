@@ -6,8 +6,13 @@ function Login(){
     let navigate = useNavigate();
 
      const NaverLogin = () =>{
-         window.location.href =`http://172.16.1.87:8080/login/oauth2/code/naver`
+         window.location.href = apiURL
      }
+
+     const clientId = "jKBO0x_XweXsMwCTxz4r";
+     const redirect_uri = "http://172.16.1.121:8080/login/oauth2/code/naver";
+     const state = false;
+     const apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=" + clientId + "&redirect_uri=" + redirect_uri + "&state=" + state;
 
     return(
         <div className='login'>

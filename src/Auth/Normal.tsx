@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Find from "./Find";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { setCookie } from "../Utility/Cookie";
+import { getCookie, removeCookie ,setCookie } from "../Utility/Cookie";
 
 function Normal(){
 
@@ -17,27 +17,31 @@ function Normal(){
 
     let navigate = useNavigate();
 
-    const baseUrl = "http://172.16.1.87:8080";  
-
+    const baseUrl = "http://172.16.1.121:8080";  
+      
     async function doLogin() { 
-        await axios
-            .post(baseUrl+"/login",
-            {
-                email : LoginInput.loginEmail,
-                password : LoginInput.loginPw
-            },
-            {headers : {
-                "Content-Type" : "application/x-www-form-urlencoded"
-            }}
-        )
-            .then((response)=>{
-                console.log("웬일?" + response.data);
-                localStorage.setItem('refresh', response.data['refresh']);
-                setCookie('access' ,response.data['access']);
-            })
-            .catch((err)=>{
-                console.log("또 에러임;" + err);
-            })
+                await axios
+                    .post(baseUrl+"/login",
+                    {
+                        email : LoginInput.loginEmail,
+                        password : LoginInput.loginPw
+                    },           
+                    {
+                        headers : {
+                            "Content-Type" : "application/x-www-form-urlencoded",
+                            Authorization : "token"                            
+                        },
+                        withCredentials : true,
+                    })
+                    .then((response)=>{
+                        console.log(JSON.stringify(response.headers))
+                        //setCookie("refresh", response.data.refresh, { path: '/', secure: true, sameSite: 'lax' });
+                        
+                    })
+                    .catch(function(err){
+                        console.log("에러" + err);
+                        navigate('/test');
+                    })                           
     }
 
     const LoginSubmit = LoginInput.loginEmailValid && LoginInput.loginPwValid;
@@ -68,7 +72,7 @@ function Normal(){
                     </button>
                     <p className="normal-login-font" onClick={()=>{keepClicked === 0 ? setKeepClicked(1) : setKeepClicked(0)}}>로그인 상태 유지</p>
                 </div>
-                <button className={"normal-login-button" + (LoginSubmit == true ? 'active' : '') } type="submit" onClick={()=>{doLogin(); navigate('/test');}} disabled={!LoginSubmit}>로그인</button>
+                <button className={"normal-login-button" + (LoginSubmit == true ? 'active' : '') } type="submit" disabled={!LoginSubmit} onClick={doLogin}>로그인</button>
                 <div className="normal-login-find">
                     <div className="normal-login-find-left">
                         <p className="normal-login-find-font" onClick={()=>{setFind('이메일 찾기')}}>이메일 찾기</p>
