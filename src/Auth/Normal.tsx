@@ -17,7 +17,7 @@ function Normal(){
 
     let navigate = useNavigate();
 
-    const baseUrl = "http://172.16.1.121:8080";  
+    const baseUrl = "http://172.16.1.82:8080";  
       
     async function doLogin() { 
                 await axios
@@ -34,9 +34,11 @@ function Normal(){
                         withCredentials : true,
                     })
                     .then((response)=>{
-                        console.log(JSON.stringify(response.headers))
-                        //setCookie("refresh", response.data.refresh, { path: '/', secure: true, sameSite: 'lax' });
-                        
+                        let access = response.data.access;
+                        let refresh = response.data.refresh; 
+                        localStorage.setItem('access', access);                        
+                        setCookie("refresh", refresh);
+                        navigate('/');
                     })
                     .catch(function(err){
                         console.log("에러" + err);

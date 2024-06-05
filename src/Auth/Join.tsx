@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
+import Valid from "./Valid";
 
 function Join(){
 
-    const baseUrl = "http://172.16.1.121:8080";
+    const baseUrl = "http://172.16.1.82:8080";
 
     async function postInfo(e : any) {
         e.preventDefault(); 
@@ -19,6 +20,13 @@ function Join(){
                 console.log("성공" + response)                
             }).catch((err)=>{
                 const msg = err.response.data.errors[0].reason;
+                if(msg==1){
+                    setVal('이메일')
+                }else if(msg==2){
+                    setVal('닉네임')
+                }else{
+                    setVal('')
+                }
                 console.log("에러" + msg);                
             })            
     }
@@ -30,6 +38,7 @@ function Join(){
     const monthList = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
     const dateList = ['1일','2일','3일','4일','5일','6일','7일','8일','9일','10일','11일','12일','13일','14일','15일','16일','17일','18일','19일','20일','21일','22일','23일','24일','25일','26일','27일','28일','29일','30일','31일'];
     const [keepClicked, setKeepClicked] = useState(0);
+    const [val, setVal] = useState('');
 
     const changeGender = (e : any) => {
         setGender(e.target.value === 1 ? '남' : '여');
@@ -128,6 +137,7 @@ function Join(){
     }, [date]);
     
     return(
+        <>
         <div className="join">
             <h3 className="join-title">회원가입</h3>
             <div className="join-body">
@@ -194,6 +204,10 @@ function Join(){
                 <button type="submit" className={"join-body-button" + (submitRequirements === true ? 'active' : '')} onClick={postInfo} disabled={!submitRequirements}>회원가입</button>
             </div>
         </div>
+        {
+            val == '이메일' ? <Valid val={val} setValid={setVal}></Valid> : val == '닉네임' ? <Valid val={val} setValid={setVal}></Valid> : null                      
+        }
+        </>
     )
 }
 
