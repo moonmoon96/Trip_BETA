@@ -16,7 +16,7 @@ root.render(
     <BrowserRouter>
     <CookiesProvider>
     <ScrollTop></ScrollTop>
-    <Trip />    
+    <Trip />
     </CookiesProvider>
     </BrowserRouter>
   </React.StrictMode>

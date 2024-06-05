@@ -124,7 +124,7 @@ input:focus{
     font-size: 14px;
     font-weight: 400;
     color: rgb(255, 255, 255);
-    background: #CCD2F0;
+    background: rgb(0, 206, 124);
     border: none;
     border-radius: 14px;
     transition: background-color 0.3s ease-out 0s;
@@ -175,11 +175,11 @@ input:focus{
     border: 1px solid rgb(233, 233, 233);
     border-radius: 20px;
     box-shadow: rgba(25, 25, 25, 0.35) 0px 4px 20px 0px;
-    caret-color: #CCD2F0;
+    caret-color: rgb(0, 206, 124);
 }
 
 .search-input:focus{
-    border: 1px solid #CCD2F0;
+    border: 1px solid rgb(0, 206, 124);
 }
 
 .bar{
@@ -412,7 +412,7 @@ input:focus{
     font-size: 12px;
     font-weight: 500;
     line-height: 18px;
-    color: #CCD2F0;
+    color: rgb(0, 206, 124);
     text-overflow: ellipsis;
     overflow-wrap: break-word;
     -webkit-box-orient: vertical;
@@ -425,7 +425,7 @@ input:focus{
     width: 2px;
     height: 2px;
     margin: 0px 6px;
-    background: #CCD2F0;
+    background: rgb(0, 206, 124);
     border-radius: 50%;
 }
 
@@ -437,7 +437,7 @@ input:focus{
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
-    color: #CCD2F0;
+    color: rgb(0, 206, 124);
     text-overflow: ellipsis;
     overflow-wrap: break-word;
     -webkit-box-orient: vertical;
@@ -538,7 +538,7 @@ input:focus{
     font-weight: 500;
     line-height: 21px;
     user-select: none;
-    color: #CCD2F0;
+    color: rgb(0, 206, 124);
 }
 
 .post-col-hide-right{
@@ -677,7 +677,7 @@ input:focus{
     height: 32px;
     margin: 0px 5px;
     font-size: 16px;
-    color: #CCD2F0;
+    color: rgb(0, 206, 124);
     background-color: rgb(255, 255, 255);
     border: 0;
 }
@@ -924,7 +924,7 @@ input:focus{
 }
 
 .normal-login-email:focus{
-    border: 1px solid #CCD2F0;
+    border: 1px solid rgb(0, 206, 124);
 }
 
 .normal-login-balance{
@@ -946,7 +946,7 @@ input:focus{
 }
 
 .normal-login-pw:focus{
-    border: 1px solid #CCD2F0;
+    border: 1px solid rgb(0, 206, 124);
 }
 
 .normal-login-keep{
@@ -986,7 +986,7 @@ input:focus{
     border-radius: 8px;
     transition: all 0.15s ease-out 0s;
     border: none;
-    background: #CCD2F0;
+    background: rgb(0, 206, 124);
 }
 
 .normal-login-font{
@@ -1025,7 +1025,7 @@ input:focus{
     font-size: 15px;
     font-weight: 400;
     color: rgb(255, 255, 255);
-    background: #CCD2F0;
+    background: rgb(0, 206, 124);
     border: none;
     border-radius: 10px;
     transition: background-color 0.3s ease-out 0s;
@@ -1083,7 +1083,7 @@ input:focus{
 .login-join-join{
     cursor: pointer;
     margin-left: 6px;
-    color: #CCD2F0;
+    color: rgb(0, 206, 124);
     text-decoration: underline;
 }
 
@@ -1118,7 +1118,7 @@ input:focus{
 .join-body-title-sub{
     font-size: 15px;
     font-weight: 800;
-    color: #CCD2F0;
+    color: rgb(0, 206, 124);
 }
 
 .join-body-main{
@@ -1151,7 +1151,7 @@ input:focus{
 }
 
 .join-body-inputbox:focus{
-    border: 1px solid #CCD2F0;
+    border: 1px solid rgb(0, 206, 124);
 }
 
 .join-body-inputboxconfirm{
@@ -1163,7 +1163,7 @@ input:focus{
     line-height: 20px;
     vertical-align: top;
     background: rgb(255, 255, 255);
-    border: 3px solid #CCD2F0;
+    border: 3px solid rgb(0, 206, 124);
     border-radius: 4px;
 }
 
@@ -1184,7 +1184,7 @@ input:focus{
 }
 
 .join-li:active{
-    border: 1px solid #CCD2F0;
+    border: 1px solid rgb(0, 206, 124);
 }
 
 .join-liconfirm{
@@ -1201,7 +1201,7 @@ input:focus{
     font-size: 14px;
     background: rgb(255, 255, 255);
     border-radius: 4px;
-    border: 3px solid #CCD2F0;
+    border: 3px solid rgb(0, 206, 124);
 }
 
 .join-ul{
@@ -1363,7 +1363,7 @@ input:focus{
 }
 
 .join-body-year-font:focus{
-    border: 1px solid #CCD2F0;
+    border: 1px solid rgb(0, 206, 124);
 }
 
 .join-body-year-fontconfirm{
@@ -1371,7 +1371,7 @@ input:focus{
     box-sizing: inherit;
     background: rgb(255, 255, 255);
     font-size: 13px;
-    border: 3px solid #CCD2F0;
+    border: 3px solid rgb(0, 206, 124);
     border-radius: 4px;
     width: 100%;
     height: 40px;
@@ -1413,7 +1413,7 @@ input:focus{
     font-size: 16px;
     cursor: pointer;
     color: rgb(255, 255, 255);
-    background: #CCD2F0;
+    background: rgb(0, 206, 124);
     border-radius: 4px;
     border: 0;
 }
@@ -1512,7 +1512,7 @@ input:focus{
 }
 
 .find-modal-inputbox:focus{
-    border: 1px solid #CCD2F0;
+    border: 1px solid rgb(0, 206, 124);
 }
 
 .find-modal-cancel{
@@ -1540,9 +1540,9 @@ input:focus{
     padding: 0px;
     font-size: 15px;
     font-weight: 500;
-    color: #CCD2F0;
+    color: rgb(0, 206, 124);
     background: rgb(255, 255, 255);
-    border: 1px solid #CCD2F0;
+    border: 1px solid rgb(0, 206, 124);
     border-radius: 10px;
     transition: background-color 0.3s ease-out 0s;
 }
@@ -1983,7 +1983,7 @@ input:focus{
     font-size: 15px;
     font-weight: 400;
     color: rgb(255, 255, 255);
-    background: #CCD2F0;
+    background: rgb(0, 206, 124);
     border: none;
     border-radius: 10px;
     transition: background-color 0.3s ease-out 0s;

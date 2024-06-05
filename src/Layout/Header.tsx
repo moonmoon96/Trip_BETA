@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import { removeCookie } from '../Utility/Cookie';
 
 function Header(){
 
@@ -30,13 +31,23 @@ function Header(){
                             )
                         })}                    
                     </div>
-                    <div className='header-nav-right'>
-                        <div className='header-nav-right-login'>
-                            <button className='header-right-button' onClick={()=>{ setClicked(()=>{return 5}); navigate('/login') }}>로그인</button>
-                            <button className='header-right-button' onClick={()=>{ setClicked(()=>{return 5}); navigate('/join') }}>회원가입</button>
-                        </div>            
-                        <button className='header-nav-right-write'>글쓰기</button>
-                    </div>
+                    {localStorage.key(0) != null ?
+                        <div className='header-nav-right'>
+                            <div className='header-nav-right-login'>
+                                <button className='header-right-button' onClick={()=>{ setClicked(()=>{return 5}); navigate('/') }}>마이페이지</button>
+                                <button className='header-right-button' onClick={()=>{ setClicked(()=>{return 5}); localStorage.clear(); removeCookie('refresh'); navigate('/') }}>로그아웃</button>
+                            </div>            
+                            <button className='header-nav-right-write'>글쓰기</button>
+                        </div>
+                        :
+                        <div className='header-nav-right'>
+                            <div className='header-nav-right-login'>
+                                <button className='header-right-button' onClick={()=>{ setClicked(()=>{return 5}); navigate('/login') }}>로그인</button>
+                                <button className='header-right-button' onClick={()=>{ setClicked(()=>{return 5}); navigate('/join') }}>회원가입</button>
+                            </div>            
+                            <button className='header-nav-right-write'>글쓰기</button>
+                        </div>
+                    }
                 </div>
             </div>            
         </div>

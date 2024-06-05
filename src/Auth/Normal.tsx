@@ -28,8 +28,7 @@ function Normal(){
                     },           
                     {
                         headers : {
-                            "Content-Type" : "application/x-www-form-urlencoded",
-                            Authorization : "token"                            
+                            "Content-Type" : "application/x-www-form-urlencoded"                            
                         },
                         withCredentials : true,
                     })
@@ -37,12 +36,11 @@ function Normal(){
                         let access = response.data.access;
                         let refresh = response.data.refresh; 
                         localStorage.setItem('access', access);                        
-                        setCookie("refresh", refresh);
+                        setCookie('refresh', refresh);
                         navigate('/');
                     })
                     .catch(function(err){
                         console.log("에러" + err);
-                        navigate('/test');
                     })                           
     }
 
