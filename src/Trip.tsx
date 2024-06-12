@@ -5,6 +5,7 @@ import Login from './Auth/Login';
 import Normal from './Auth/Normal';
 import Join from './Auth/Join';
 import Detail from './Community/detail';
+import Test from './Auth/Test';
 
 function Trip() {
 
@@ -17,6 +18,7 @@ function Trip() {
         <Route path='/login/normal' element={<Normal></Normal>}></Route>  
         <Route path='/join' element={<Join></Join>}></Route>
         <Route path='/detail' element={<Detail></Detail>}></Route>
+        <Route path='test' element={<Test></Test>}></Route>
       </Routes>
     </>
   );

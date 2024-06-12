@@ -1434,6 +1434,17 @@ input:focus{
     padding: 0px;
     opacity: 1;
     transition: opacity 0.6s ease 0s;
+    animation: fadein 1s ease 1s;
+    -webkit-animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
 .find-modal{
@@ -1905,6 +1916,7 @@ input:focus{
     border-radius: 10px;
     transition: background-color 0.3s ease-out 0s;
 }
+
 .valid{
     position: fixed;
     top: 0px;
@@ -1918,7 +1930,8 @@ input:focus{
     background: rgba(25, 25, 25, 0.5);
     padding: 0px;
     opacity: 1;
-    transition: opacity 0.6s ease 0s;
+    animation: fadein 1s ease 1s;
+    -webkit-animation: fadein 1s;
 }
 
 .valid-modal{
@@ -1987,4 +2000,10 @@ input:focus{
     border: none;
     border-radius: 10px;
     transition: background-color 0.3s ease-out 0s;
+}
+
+.ts{
+    position: relative;
+    top: 400px;
+    left: 400px;
 }

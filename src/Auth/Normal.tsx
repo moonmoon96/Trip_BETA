@@ -3,6 +3,7 @@ import Find from "./Find";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { getCookie, removeCookie ,setCookie } from "../Utility/Cookie";
+import Try from "./TryNormal";
 
 function Normal(){
 
@@ -15,9 +16,11 @@ function Normal(){
         loginPwValid : false
     })
 
+    const [val, setVal] = useState('');
+
     let navigate = useNavigate();
 
-    const baseUrl = "http://172.16.1.82:8080";  
+    const baseUrl = "http://172.16.1.102:8080";  
       
     async function doLogin() { 
                 await axios
@@ -40,19 +43,23 @@ function Normal(){
                         navigate('/');
                     })
                     .catch(function(err){
-                        console.log("에러" + err);
+                        const msg = err.response.data
+                        if(msg){
+                            setVal('에러');
+                        }
+                        console.log("에러" + msg);
                     })                           
     }
 
     const LoginSubmit = LoginInput.loginEmailValid && LoginInput.loginPwValid;
 
     useEffect(() => {
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+        const emailRegex = /.+/;
         setLoginInput(prev => ({ ...prev, loginEmailValid: emailRegex.test(LoginInput.loginEmail) }));
     }, [LoginInput.loginEmail]);
 
     useEffect(() => {
-        const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/;
+        const pwRegex = /.+/;
         setLoginInput(prev => ({ ...prev, loginPwValid: pwRegex.test(LoginInput.loginPw) }));
     }, [LoginInput.loginPw]);
 
@@ -70,7 +77,7 @@ function Normal(){
                 <button className={"keep-button" + (keepClicked === 1 ? 'able' : '')} onClick={()=>{keepClicked === 0 ? setKeepClicked(1) : setKeepClicked(0)}}>
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6.65217L5.58333 11L12 1" stroke="#fff" stroke-width="1.5"></path></svg>
                     </button>
-                    <p className="normal-login-font" onClick={()=>{keepClicked === 0 ? setKeepClicked(1) : setKeepClicked(0)}}>로그인 상태 유지</p>
+                    <p className="normal-login-font" onClick={()=>{keepClicked === 0 ? setKeepClicked(1) : setKeepClicked(0)}}>이메일 저장</p>
                 </div>
                 <button className={"normal-login-button" + (LoginSubmit == true ? 'active' : '') } type="submit" disabled={!LoginSubmit} onClick={doLogin}>로그인</button>
                 <div className="normal-login-find">
@@ -84,6 +91,9 @@ function Normal(){
             {
                 find == '이메일 찾기' ? <Find find={find} setFind={setFind}></Find> : find == '비밀번호 찾기' ? <Find find={find} setFind={setFind}></Find> : null                      
             }            
+            {
+                val == '에러' ? <Try val={val} setValid={setVal}></Try> : null
+            }
         </>
     )
 }

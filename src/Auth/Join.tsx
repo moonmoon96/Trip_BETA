@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Valid from "./Valid";
+import { useNavigate } from "react-router-dom";
 
 function Join(){
 
-    const baseUrl = "http://172.16.1.82:8080";
+    const baseUrl = "http://172.16.1.102:8080";
+
+    let navigate = useNavigate();
 
     async function postInfo(e : any) {
         e.preventDefault(); 
@@ -17,18 +20,23 @@ function Join(){
                 gender : (inputValue.gender === '남' ? 'm' : 'f'),
                 birth : inputValue.year + inputValue.month.replace('월', '').padStart(2, '0') + inputValue.date.replace('일', '').padStart(2, '0')
             }).then((response)=>{
-                console.log("성공" + response)                
+                console.log("성공" + response)         
+                navigate('/login/normal');
             }).catch((err)=>{
-                const msg = err.response.data.errors[0].reason;
-                if(msg==1){
-                    setVal('이메일')
-                }else if(msg==2){
-                    setVal('닉네임')
-                }else{
-                    setVal('')
+                if (err.response && err.response.data && err.response.data.errors && err.response.data.errors.length > 0) {
+                    const msg = err.response.data.errors[0].reason;
+                    if(msg==1){
+                        setVal('이메일')
+                    } else if(msg==2){
+                        setVal('닉네임')
+                    } else {
+                        setVal('')
+                    }
+                    console.log("에러" + msg); 
+                } else {
+                    console.log("에러" + err);
                 }
-                console.log("에러" + msg);                
-            })            
+            })     
     }
 
     const [open, setOpen] = useState('');
