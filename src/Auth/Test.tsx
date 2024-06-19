@@ -2,7 +2,8 @@ import refreshAPI from "../Utility/TokenRefresher";
 
 function Test(){
     async function Call(){
-            refreshAPI.get('/user');
+            refreshAPI.get('').then((response)=>{
+            });
     }
 
     return(

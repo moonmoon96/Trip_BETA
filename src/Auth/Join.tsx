@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Join(){
 
-    const baseUrl = "http://172.16.1.102:8080";
+    const baseUrl = "http://172.16.1.138:8080";
 
     let navigate = useNavigate();
 
