@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Join(){
 
-    const baseUrl = "http://172.16.1.138:8080";
+    const baseUrl = "http://172.16.1.97:8080";
 
     let navigate = useNavigate();
 
@@ -23,8 +23,8 @@ function Join(){
                 console.log("성공" + response)         
                 navigate('/login/normal');
             }).catch((err)=>{
-                if (err.response && err.response.data && err.response.data.errors && err.response.data.errors.length > 0) {
-                    const msg = err.response.data.errors[0].reason;
+                const msg = err.response.data.code;
+
                     if(msg==1){
                         setVal('이메일')
                     } else if(msg==2){
@@ -33,9 +33,7 @@ function Join(){
                         setVal('')
                     }
                     console.log("에러" + msg); 
-                } else {
-                    console.log("에러" + err);
-                }
+                
             })     
     }
 

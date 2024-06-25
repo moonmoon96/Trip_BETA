@@ -20,7 +20,7 @@ function Normal(){
 
     let navigate = useNavigate();
 
-    const baseUrl = "http://172.16.1.138:8080";  
+    const baseUrl = "http://172.16.1.97:8080";  
       
     async function doLogin() { 
                 await axios
@@ -40,7 +40,6 @@ function Normal(){
                         let refresh = response.data.refresh; 
                         localStorage.setItem('access', access);                        
                         setCookie('refresh', refresh);
-                        console.log(refresh);
                         navigate('/');
                     })
                     .catch(function(err){
