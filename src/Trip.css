@@ -2299,14 +2299,22 @@ input:focus{
     background-color: white;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    width: 100%;
+    width: 100vw;
     max-width: 100%;  
 }
 
 .write-content{
     position: relative;
-    overflow-y: scroll;
+    overflow-y: hidden;
     max-height: 550px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.write-content2{
+    position: relative;
+    overflow-y: hidden;
+    max-height: 700px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
@@ -2332,13 +2340,12 @@ input:focus{
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0px;
     align-items: flex-start;
     -webkit-box-pack: start;
     justify-content: flex-start;
     box-sizing: border-box;
     width: 100%;
-    gap: 24px;
+    
 }
 
 .write-header{
@@ -2385,6 +2392,7 @@ input:focus{
 
 .write-line{
     display: flex;
+    box-sizing: border-box;
     gap: 4px;
     -webkit-box-align: center;
     align-items: center;
@@ -2432,6 +2440,7 @@ input:focus{
 .write-body-sch{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    box-sizing: border-box;
     gap: 14px 10px;
     width: 100%;
     padding: 16px 18px 70px;
@@ -2460,4 +2469,399 @@ input:focus{
     cursor: pointer;
     transition: background-color  0.25s ease-out 0s;
     background-color: rgb(0, 206, 124);
+}
+
+.write-back{
+    position: absolute;
+    left: 18px;
+    display: flex;
+    width: 24px;
+    height: 24px;
+    transform: rotate(0deg);
+    cursor: pointer;
+}
+
+.write-content-bodycheck{
+    user-select: none;
+    -webkit-user-drag: none;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 0px 0px 20px;
+}
+
+.bodycheck-title{
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0px;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.bodycheck-titlefont{
+    padding: 0px 18px;
+    color: rgb(106, 106, 106);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 100%;
+}
+
+.bodycheck-titlefont::after{
+    content: "*";
+    color: rgb(252, 112, 112);
+    font-size: 14px;
+    line-height: 100%;
+}
+
+.bodycheck-titlecount{
+    user-select: none;
+    -webkit-user-drag: none;
+    font-size: 13px;
+    line-height: 100%;
+    padding-right: 18px;
+    color: rgb(106, 106, 106);
+    text-align: right;
+}
+
+.bodycheck-titlecountred{
+    user-select: none;
+    -webkit-user-drag: none;
+    font-size: 13px;
+    line-height: 100%;
+    padding-right: 18px;
+    color: rgb(252, 112, 112);
+    text-align: right;
+}
+
+.bodycheck-titlecountgreen{
+    user-select: none;
+    -webkit-user-drag: none;
+    font-size: 13px;
+    line-height: 100%;
+    padding-right: 18px;
+    color: rgb(0, 206, 124);
+    text-align: right;
+}
+
+.write-titlebody{
+    position: relative;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 18px 0px;
+    box-sizing: border-box;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+}
+
+.write-titlebody-ex{
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+    top: 16px;
+    left: 0px;
+    gap: 8px;
+    width: 100%;
+    padding: 0px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.write-titlebody-exno{
+    display: none;
+}
+
+.write-titlebody-ex2{
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+    top: 16px;
+    left: 0px;
+    gap: 8px;
+    width: 100%;
+    padding: 0px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.write-titlebody-ex2no{
+    display: none;
+}
+
+.write-titlebody-exfont{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    color: rgb(106, 106, 106);
+}
+
+.write-titlebody-exsub{
+    font-size: 13px;
+    line-height: 100%;
+    color: rgb(0, 206, 124);
+}
+
+.write-titlebody-text{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    width: 100%;
+    height: 100px;
+    padding: 0px;
+    border: none;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.write-titlebody-text:focus{
+    outline: none;
+}
+
+.write-titlebody-pad{
+    width: 100%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgb(233, 233, 233);
+}
+
+.controlheight{
+    height: 24px;
+    box-sizing: border-box;
+}
+
+.write-content-text{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 15px;
+    line-height: 150%;
+    width: 100%;
+    height: 240px;
+    padding: 0px;
+    border: none;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.write-content-text:focus{
+    outline: none;
+}
+
+.controlpad{
+    width: 100%;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgb(233, 233, 233);
+}
+
+.write-footer{
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    bottom: 0px;
+    display: flex;
+    flex: 1 1 0%;
+    padding: 10px 18px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.write-button{
+    display: flex;
+    flex-shrink: 1;
+    gap: 10px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 50%;
+    height: 50px;
+    padding: 12px 16px;
+    white-space: nowrap;
+    color: white;
+    background-color: rgb(219, 219, 219);
+    border-radius: 14px;
+    border: 0;
+    margin: auto;
+}
+
+.write-buttonact{
+    cursor: pointer;
+    display: flex;
+    flex-shrink: 1;
+    gap: 10px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 50%;
+    height: 50px;
+    padding: 12px 16px;
+    white-space: nowrap;
+    background-color: rgb(0, 206, 124);
+    border-radius: 14px;
+    border: 0;
+    margin: auto;
+}
+
+.write-button-text{
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 100%;
+    color: white;
+}
+
+.write-photo{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    width: 100%;
+    padding-right: 18px;
+}
+
+.write-photo-main{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 16px 18px 0px 16px;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    width: 100%;   
+}
+
+.write-photo-show{
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    overflow: visible;
+    gap: 12px;
+    -webkit-box-align: center;
+}
+
+.write-img{
+    display: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    appearance: none;
+    border-radius: 0px;
+}
+
+.write-getsc{
+    font-size: 13px;
+    line-height: 100%;
+    color: rgb(154, 154, 154);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+}
+
+.write-getsc-button{
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    padding: 10px 18px;
+    background-color: white;
+}
+
+.getsc-name{
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 16px 18px;
+    -webkit-box-pack: justify;
+    justify-content: space-around;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0px;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.getsc-title{
+    color: rgb(37, 37, 37);
+    font-size: 14px;
+    line-height: 100%;
+    box-sizing: border-box;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+
+.getsc-titleact{
+    color: rgb(0, 206, 124);
+    font-size: 14px;
+    line-height: 100%;
+    box-sizing: border-box;
+}
+
+.getsc-checkbox{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    border: 1px solid rgb(233, 233, 233);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.getsc-checkboxact{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background-color: rgb(0, 206, 124);
+    border: 1px solid rgb(233, 233, 233);
+    border-radius: 8px;
 }

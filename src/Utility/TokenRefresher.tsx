@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getCookie, removeCookie, setCookie } from './Cookie';
 
     const refreshAPI = axios.create({
-      baseURL: "http://172.16.1.97:8080/",
+      baseURL: "http://172.16.1.112:8080/",
       headers: {
         "Content-Type": "application/json",
         "Access" : `${localStorage.getItem('access')}`,
@@ -31,7 +31,7 @@ import { getCookie, removeCookie, setCookie } from './Cookie';
                
               try {
                 const res = await axios.post(
-                  'http://172.16.1.97:8080/reissue',{},
+                  'http://172.16.1.112:8080/reissue',{},
                   {headers: {
                     Authorization: `${localStorage.getItem('access')}`,
                     Refresh: `${getCookie('refresh')}`,

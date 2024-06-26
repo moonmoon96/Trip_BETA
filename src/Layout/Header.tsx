@@ -47,7 +47,7 @@ function Header(){
                                 <button className='header-right-button' onClick={()=>{ setClicked(()=>{return 5}); navigate('/login') }}>로그인</button>
                                 <button className='header-right-button' onClick={()=>{ setClicked(()=>{return 5}); navigate('/join') }}>회원가입</button>
                             </div>            
-                            <button className='header-nav-right-write' onClick={()=>{ alert('로그인')}}>글쓰기</button>
+                            <button className='header-nav-right-write' onClick={()=>{ alert('로그인'); navigate('/login')}}>글쓰기</button>
                         </div>
                     }
                 </div>

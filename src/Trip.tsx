@@ -8,6 +8,8 @@ import Detail from './Community/Detail';
 import Chat from './Chat/Chat';
 import refreshAPI from './Utility/TokenRefresher';
 import { useEffect } from 'react';
+import Write from './Community/WriteTwo';
+import GetSchedule from './Community/GetSchedule';
 
 function Trip() {
 
@@ -33,6 +35,8 @@ function Trip() {
         <Route path='/login/normal' element={<Normal></Normal>}></Route>  
         <Route path='/join' element={<Join></Join>}></Route>
         <Route path='/detail' element={<Detail></Detail>}></Route>
+        <Route path='/write' element={<Write></Write>}></Route>
+        <Route path='/test' element={<GetSchedule></GetSchedule>}></Route>
       </Routes>
     </>
   );

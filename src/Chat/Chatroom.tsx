@@ -1,9 +1,29 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 interface ChatroomProps {
     click : string;
     setClick : any;
 }
 
 function Chatroom({click, setClick} : ChatroomProps){
+
+    const [chatRoomList, setChatRoomList] = useState([]);
+
+    useEffect(()=>{
+        const loadChatRoomHistory = async () => {
+            try {
+                const response =await axios.get('');
+                const chatRoomList = response.data.map((i : any) => {
+                    return;
+                })
+            }catch(err){
+                console.log("채팅 내역 로드 실패", err)
+            }
+        };
+        loadChatRoomHistory();
+    }, []);
+    
     return(
         <div className="chat-body">
             <div className="chat-frame">
