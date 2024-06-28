@@ -2,7 +2,7 @@
   "name": "trip",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://moonmoon96.github.io",
+  "homepage": "https://moonmoon96.github.io/main",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@stomp/stompjs": "^7.0.0",
